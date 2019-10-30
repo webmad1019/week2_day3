@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Closures & Scope</title>
+</head>
+
+<body>
+    <script>
+
+        /*
+        // Closures: una función almacena en memoria tanto su contenido como su contexto cuando sea necesario
+
+        count = () => {
+
+            console.log('Inicio ejecución función')
+
+            let counter = 0
+            setInterval(() => {
+                let increase = counter += 5
+                console.log(increase)
+            }, 1000)
+
+            console.log('Fín ejecución función')
+        }
+
+        count()
+        */
+
+
+
+        /*
+        // Variable shadowing
+        let first = 1
+        let last = 2
+
+        const fn = () => {
+            first = 3
+            let last = 4
+        }
+
+        fn()
+        console.log('valor de first:', first)
+        console.log('valor de last:', last)         // Prevalece el global scope frente a un variable shadowing
+        */
+
+
+
+        /*
+        // IIFE - Funciones de invocación inmediata
+
+        (function () {
+            let a = 0
+            alert(a)
+        }());
+        */
+
+
+
+
+        /*
+        console.log(hoisted)
+        var hoisted = 'Ger'             // var es hoisted
+        let notHoisted = 'Ger'          // let y const no son hoisted
+        */
+
+
+
+
+        /*
+        hoisted()                       // function statement es hoisted
+        function hoisted() {
+            alert("YAY")
+        }
+
+        notHoisted()                     // function expression no es hoisted
+        const notHoisted = () => alert("YAY")
+        */
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

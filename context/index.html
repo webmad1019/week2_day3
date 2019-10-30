@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Context</title>
+</head>
+
+<body>
+    <script>
+
+
+
+        const person = {
+            age: 22,
+            weight: 89,
+            grow: function (years) {    // El contexto de un método es el objeto al que pertenece
+                this.age += years
+            },
+            walk1: function () {
+                setInterval(function () {   // El contexto de una función (this) es window, incluso estando dentro de un método
+                    this.weight -= .1
+                    console.log(this.weight)
+                }, 1000)
+            },
+            walk2: function () {     // Solucionado! (no hagas esto) Conservamos el contexto del objeto en la variable 'that'
+                const that = this
+                setInterval(function () {
+                    that.weight -= .1
+                    console.log(that.weight)
+                }, 1000)
+            },
+            walk3: function () {
+                setInterval(() => {  // Solucionado! Arrow function no reorientan el contexto
+                    this.weight -= .1
+                    console.log(this.weight)
+                }, 1000)
+            },
+            walk4: function () {
+                const walkingInt = setInterval(function () {
+                    this.weight >= 40 ? this.weight -= .1 : clearInterval(walkingInt)
+                    console.log(this.weight)
+                }.bind(this), 10)
+            }
+        }
+
+
+        person.grow(10)
+        console.log('la persona tiene ', person.age, ' años')
+        // person.walk1()       // No funciona aw :(
+
+        //person.walk2()
+        //person.walk3()
+        person.walk4()
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

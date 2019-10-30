@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function declaration</title>
+</head>
+
+<body>
+
+    <button>HAZME CLICK PARA INVOCAR LA FUNCION NOMINAL</button>
+    <script>
+
+
+
+
+
+
+        // function statement declaration
+        function whatever() {
+            // statements
+        }
+
+        console.log(typeof whatever)    // function
+
+
+
+
+
+
+        // function expressions declarations
+        const fnExpr = function () {
+            // statements
+        }
+        const arrFnExp = () => {
+            // statements
+        }
+
+
+
+
+
+
+        // Function global object constructor
+        const test3 = new Function('a', 'b', 'return a+b')
+        console.log(test3(40, 25))
+
+
+
+
+
+
+        // Functions as values: example 1
+        function add(first, second, resultFn) {
+            console.log("Add function started")
+            resultFn ? resultFn(first + second) : console.log('No function for', first, 'and', second)
+            /*
+            if (resultFn) {
+                resultFn(first + second)
+            } else {
+                console.log('No function for', first, 'and', second)
+            }
+            */
+        }
+        function logDone(num) {
+            console.log("I'm done! The result is: " + num);
+        }
+        function square(num) {
+            console.log("The square is: " + num * num);
+        }
+        add(2, 3, logDone)
+        add(2, 3, square)
+        add(2, 3)
+
+
+
+
+
+
+        // Functions as values: example 2
+        function estimatePrice(cost, action) {
+            let profit = 50
+            let subtotal = cost + profit
+
+            action ? action(subtotal) : noVATApplied(subtotal)
+
+        }
+
+        function applyNormalVAT(subtotal) {
+            console.log(subtotal * 1.21)
+        }
+        function applyReducedVAT(subtotal) {
+            console.log(subtotal * 1.1)
+        }
+        function noVATApplied(subtotal) {
+            console.log(subtotal)
+        }
+
+        estimatePrice(100, applyNormalVAT)
+        estimatePrice(245, applyReducedVAT)
+        estimatePrice(87, applyReducedVAT)
+        estimatePrice(6)
+        estimatePrice(823)
+
+
+
+
+
+        // Functions as values: example 3
+        document.getElementsByTagName('button')[0].onclick = showAlert
+
+        function showAlert() {
+            alert("Te pillé!")
+        }
+
+
+
+
+
+
+
+        // Anonymous functions
+        const arr = [1, 2, 3]
+        arr.forEach(elm => console.log(elm))
+
+        console.log('---- ahora nominal -----')
+        arr.forEach(showOnConsole)
+        function showOnConsole(elm) {
+            console.log(elm)
+        }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

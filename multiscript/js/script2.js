@@ -1,0 +1,1 @@
+alert('soy el script 2 y tengo acceso al nombre: ' + myName)

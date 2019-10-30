@@ -1,0 +1,1 @@
+console.log('soy el script 3 y lo mismo yay! =>', myName)
